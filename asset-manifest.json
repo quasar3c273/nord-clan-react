@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/nord-clan-react/static/css/main.23ce1141.chunk.css",
+    "main.js": "/nord-clan-react/static/js/main.29e445da.chunk.js",
+    "main.js.map": "/nord-clan-react/static/js/main.29e445da.chunk.js.map",
+    "runtime-main.js": "/nord-clan-react/static/js/runtime-main.7ce25acd.js",
+    "runtime-main.js.map": "/nord-clan-react/static/js/runtime-main.7ce25acd.js.map",
+    "static/js/2.084a1ae4.chunk.js": "/nord-clan-react/static/js/2.084a1ae4.chunk.js",
+    "static/js/2.084a1ae4.chunk.js.map": "/nord-clan-react/static/js/2.084a1ae4.chunk.js.map",
+    "static/js/3.be5ff5cb.chunk.js": "/nord-clan-react/static/js/3.be5ff5cb.chunk.js",
+    "static/js/3.be5ff5cb.chunk.js.map": "/nord-clan-react/static/js/3.be5ff5cb.chunk.js.map",
+    "index.html": "/nord-clan-react/index.html",
+    "static/css/main.23ce1141.chunk.css.map": "/nord-clan-react/static/css/main.23ce1141.chunk.css.map",
+    "static/js/2.084a1ae4.chunk.js.LICENSE.txt": "/nord-clan-react/static/js/2.084a1ae4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7ce25acd.js",
+    "static/js/2.084a1ae4.chunk.js",
+    "static/css/main.23ce1141.chunk.css",
+    "static/js/main.29e445da.chunk.js"
+  ]
+}
