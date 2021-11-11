@@ -1,0 +1,59 @@
+.input-wrapper {
+  width: 100%;
+  background-color: gray;
+  padding: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  &__item {
+    font-size: 12px;
+    margin: 2px;
+    background-color: green;
+  }
+
+  &__item-close {
+    &:after {
+      display: inline-block;
+      content: "\00d7";
+    }
+  }
+
+  &__chevron-down {
+    &:after {
+      display: inline-block;
+      content: "\25bc";
+    }
+  }
+}
+
+.users {
+  position: relative;
+
+  &__list {
+    position: absolute;
+    display: block;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    top: 50px;
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+//.input-wrapper:hover .test__list {
+//  display: none;
+//}
+
+//.input-wrapper:hover ~ .test__list{
+//  display:none;
+//}
