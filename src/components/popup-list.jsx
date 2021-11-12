@@ -9,7 +9,8 @@ const PopupList = ({
     handleClick
 }) => {
     return (
-        <ul key="list-popup"
+        <ul
+            key="list-popup"
             className={`${isActive ? "display-none " : ""}users__list`}
             onClick={setDisplay.bind(null, true)}
         >
@@ -25,7 +26,9 @@ const PopupList = ({
                         user.checked ? "checked-user " : ""
                     }users__list__item`}
                 >
-                    <span key={user.userName} className="test123">{user.userName}</span>
+                    <span key={user.userName} className="test123">
+                        {user.userName}
+                    </span>
                     {isMulti && (
                         <input
                             key={`${user.userId}qwertyqweq`}
