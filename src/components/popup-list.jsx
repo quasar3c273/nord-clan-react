@@ -14,32 +14,39 @@ const PopupList = ({
             className={`${isActive ? "display-none " : ""}users__list`}
             onClick={setDisplay.bind(null, true)}
         >
-            {filteredUsers.map((user) => (
-                <li
-                    key={`${user.userId}qwerty`}
-                    onClick={
-                        isMulti
-                            ? onToggle.bind(null, user.userId)
-                            : handleClick.bind(null, user.userId)
-                    }
-                    className={`${
-                        user.checked ? "checked-user " : ""
-                    }users__list__item`}
-                >
+            {filteredUsers.length > 0 ? (
+                filteredUsers.map((user) => (
+                        <li
+                            key={`${user.userId}qwerty`}
+                            onClick={
+                                isMulti
+                                    ? onToggle.bind(null, user.userId)
+                                    : handleClick.bind(null, user.userId)
+                            }
+                            className={`${
+                                user.checked ? "checked-user " : ""
+                            }users__list__item`}
+                        >
                     <span key={user.userName} className="test123">
                         {user.userName}
                     </span>
-                    {isMulti && (
-                        <input
-                            key={`${user.userId}qwertyqweq`}
-                            className="qwerty12"
-                            type="checkbox"
-                            checked={user.checked}
-                            readOnly
-                        />
-                    )}
-                </li>
-            ))}
+                            {isMulti && (
+                                <input
+                                    key={`${user.userId}qwertyqweq`}
+                                    className="qwerty12"
+                                    type="checkbox"
+                                    checked={user.checked}
+                                    readOnly
+                                />
+                            )}
+                        </li>
+                    ))
+            ) : (
+                <span className="test123">Ничего не найдено</span>
+            )
+
+            }
+
         </ul>
     );
 };
