@@ -1,6 +1,18 @@
 import React from "react";
 
-const CheckedList = ({ userInfo, onToggle, isMulti }) => {
+interface infoAboutUsers {
+    userId: number;
+    userName: string;
+    checked: boolean;
+}
+
+type typesPropsList = {
+    userInfo: infoAboutUsers[];
+    onToggle: (id: number) => void;
+    isMulti: boolean;
+}
+
+const CheckedList = ({ userInfo, onToggle, isMulti } : typesPropsList) => {
     return (
         <div className="test42">
             {userInfo.map((user, index) => {

@@ -3,11 +3,24 @@ import PopupList from "./popup-list";
 import CheckedList from "./checked-list";
 import SelectField from "./select-field";
 
-const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick }) => {
+interface infoAboutUsers {
+    userId: number;
+    userName: string;
+    checked: boolean;
+}
+
+type typesPropsList = {
+    userInfo: infoAboutUsers[];
+    onToggle: (id: number | string) => void;
+    handleClick: (id: number) => void;
+    isMulti: boolean;
+}
+
+const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick } : typesPropsList) => {
     const [isActive, setIsActive] = useState(false);
     const [filter, setFilter] = React.useState("");
 
-    const handleChange = (event) => {
+    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         setFilter(event.target.value);
     };
 
@@ -15,7 +28,7 @@ const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick }) => {
         setIsActive(!isActive);
     };
 
-    const setDisplay = (display) => {
+    const setDisplay = (display: boolean) => {
         setIsActive(display);
     };
 

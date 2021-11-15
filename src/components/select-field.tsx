@@ -1,6 +1,13 @@
 import React from "react";
 
-const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }) => {
+type typesPropsList = {
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    setDisplay: (e: boolean) => void;
+    onToggle: (id: string | number) => void;
+    handleToggle: (params?: any) => any
+}
+
+const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }: typesPropsList) => {
     return (
         <div className="wrapper">
             <input
