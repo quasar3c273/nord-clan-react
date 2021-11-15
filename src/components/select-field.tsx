@@ -1,10 +1,11 @@
 import React from "react";
+import useDebounce from "../hooks/useDebounce";
 
 type typesPropsList = {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     setDisplay: (e: boolean) => void;
-    onToggle: (id: string | number) => void;
-    handleToggle: (params?: any) => any
+    onToggle: (id: "closeAll" | number) => void;
+    handleToggle: () => void
 }
 
 const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }: typesPropsList) => {
@@ -13,7 +14,7 @@ const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }: types
             <input
                 type="text"
                 id="entry-field"
-                onChange={handleChange}
+                onChange={useDebounce(handleChange, 500)}
                 onFocus={setDisplay.bind(null, false)}
             />
             <button
