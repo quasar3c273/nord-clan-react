@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import getUsers from "./get-data/getUsers";
 import EntryField from "./components/entry-field";
+import { infoAboutUsers } from "./types";
+
+// type localStorageType = {
+//     newUserInfo: infoAboutUsers[];
+// }
 
 function App() {
-    const [userInfo, setUserInfo] = useState([]);
+    const [userInfo, setUserInfo] = useState<infoAboutUsers[]>([]);
 
-    const handleClick = (id) => {
-        console.log(id);
-        const newUserInfo = userInfo.map((user) => {
+    const handleClick = (id: number) => {
+        const newUserInfo: infoAboutUsers[] = userInfo.map((user: infoAboutUsers) => {
             if (user.userId === id) {
                 return {
                     ...user,
@@ -25,8 +29,8 @@ function App() {
         setUserInfo(newUserInfo);
     };
 
-    const toggleHandler = (id) => {
-        const newUserInfo = userInfo.map((user) => {
+    const toggleHandler = (id: number | "closeAll") => {
+        const newUserInfo = userInfo.map((user: infoAboutUsers) => {
             if (user.userId === id) {
                 return {
                     ...user,
@@ -46,10 +50,11 @@ function App() {
 
     useEffect(() => {
         if (localStorage.getItem("users") !== null) {
-            setUserInfo(JSON.parse(localStorage.getItem("users")));
+            const localUserInfo: string = localStorage.getItem("users") || "";
+            setUserInfo(JSON.parse(localUserInfo));
         } else {
             getUsers().then((data) => {
-                data.map((user) => {
+                data.map((user: infoAboutUsers) => {
                     user.checked = false;
                     return user;
                 });

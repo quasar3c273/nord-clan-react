@@ -1,8 +1,15 @@
+type infoAboutUsers = {
+    id: number;
+    username: string;
+}
+
+const urlGetUsers = "https://jsonplaceholder.typicode.com/users";
+
 function getUsers() {
-    return fetch("https://jsonplaceholder.typicode.com/users")
+    return fetch(urlGetUsers)
         .then((response) => response.json())
         .then((users) =>
-            users.map((user) => ({
+            users.map((user: infoAboutUsers) => ({
                 userId: user.id,
                 userName: user.username
             }))

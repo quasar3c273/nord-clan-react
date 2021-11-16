@@ -1,9 +1,9 @@
 import React from "react";
 
-interface infoAboutUsers {
+type infoAboutUsers = {
     userId: number;
     userName: string;
-    checked: boolean;
+    checked?: boolean;
 }
 
 type typesPropsList = {

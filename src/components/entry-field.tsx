@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import PopupList from "./popup-list";
 import CheckedList from "./checked-list";
 import SelectField from "./select-field";
-
-interface infoAboutUsers {
-    userId: number;
-    userName: string;
-    checked: boolean;
-}
+import { infoAboutUsers } from "../types";
 
 type typesPropsList = {
     userInfo: infoAboutUsers[];
-    onToggle: (id: number | string) => void;
+    onToggle: (id: number | "closeAll") => void;
     handleClick: (id: number) => void;
     isMulti: boolean;
 }

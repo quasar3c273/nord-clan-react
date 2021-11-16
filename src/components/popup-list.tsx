@@ -1,4 +1,14 @@
 import React from "react";
+import { infoAboutUsers } from "../types";
+
+type popupListTypes = {
+    isActive: boolean;
+    setDisplay: (e: boolean) => void;
+    filteredUsers: infoAboutUsers[];
+    isMulti: boolean;
+    onToggle: (id: "closeAll" | number) => void;
+    handleClick: (id: number) => void;
+}
 
 const PopupList = ({
     isActive,
@@ -7,7 +17,7 @@ const PopupList = ({
     isMulti,
     onToggle,
     handleClick
-}) => {
+}: popupListTypes) => {
     return (
         <ul
             key="list-popup"
@@ -15,7 +25,7 @@ const PopupList = ({
             onClick={setDisplay.bind(null, true)}
         >
             {filteredUsers.length > 0 ? (
-                filteredUsers.map((user) => (
+                filteredUsers.map((user: any) => (
                     <li
                         key={`${user.userId}qwerty`}
                         onClick={
