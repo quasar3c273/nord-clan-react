@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.scss";
+import "./index.scss";
 import getUsers from "./get-data/getUsers";
 import EntryField from "./components/entry-field";
 import { infoAboutUsers } from "./types";
