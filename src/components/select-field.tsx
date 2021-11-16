@@ -5,10 +5,11 @@ type typesPropsList = {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     setDisplay: (e: boolean) => void;
     onToggle: (id: "closeAll" | number) => void;
-    handleToggle: () => void
+    handleToggle: () => void;
+    arrowStatus: boolean;
 }
 
-const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }: typesPropsList) => {
+const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowStatus }: typesPropsList) => {
     return (
         <div className="wrapper">
             <input
@@ -22,7 +23,7 @@ const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle }: types
                 onClick={onToggle.bind(null, "closeAll")}
             />
             <button
-                className="input-wrapper__chevron-down"
+                className={`input-wrapper__chevron-${arrowStatus ? "down" : "up"}`}
                 onClick={handleToggle}
             />
         </div>

@@ -45,6 +45,13 @@
             content: "\25bc";
         }
     }
+
+    &__chevron-up {
+        &:after {
+            display: inline-block;
+            content: "\25B2";
+        }
+    }
 }
 
 .users {
