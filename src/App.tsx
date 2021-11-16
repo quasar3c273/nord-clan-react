@@ -4,10 +4,6 @@ import getUsers from "./get-data/getUsers";
 import EntryField from "./components/entry-field";
 import { infoAboutUsers } from "./types";
 
-// type localStorageType = {
-//     newUserInfo: infoAboutUsers[];
-// }
-
 function App() {
     const [userInfo, setUserInfo] = useState<infoAboutUsers[]>([]);
 
