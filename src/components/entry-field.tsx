@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupList from "./popup-list";
 import CheckedList from "./checked-list";
 import SelectField from "./select-field";
@@ -27,6 +27,19 @@ const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick } : types
         setIsActive(display);
     };
 
+    function toggleEnterEsc(event: KeyboardEvent) {
+        if (event.key === "Enter") {
+            console.log(event.key);
+            setIsActive(false);
+        } else if (event.key === "Escape") {
+            setIsActive(true);
+        }
+    };
+
+    useEffect(() => {
+        window.document.body.addEventListener("keydown", toggleEnterEsc);
+    }, []);
+
     const filteredUsers =
         filter === ""
             ? userInfo
@@ -36,7 +49,8 @@ const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick } : types
 
     return (
         <>
-            <div className="users">
+            <div
+                className="users">
                 <div className="input-wrapper">
                     <CheckedList
                         onToggle={onToggle}
@@ -44,6 +58,7 @@ const EntryField = ({ userInfo, onToggle, isMulti = false, handleClick } : types
                         isMulti={isMulti}
                     />
                     <SelectField
+                        arrowStatus={isActive}
                         handleChange={handleChange}
                         setDisplay={setDisplay}
                         onToggle={onToggle}
