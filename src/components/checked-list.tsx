@@ -1,27 +1,23 @@
 import React from "react";
-
-type infoAboutUsers = {
-    userId: number;
-    userName: string;
-    checked?: boolean;
-}
+import { infoAboutUsers, allClasses } from "../types";
 
 type typesPropsList = {
     userInfo: infoAboutUsers[];
     onToggle: (id: number) => void;
     isMulti: boolean;
+    classesSelectComponent: allClasses;
 }
 
-const CheckedList = ({ userInfo, onToggle, isMulti } : typesPropsList) => {
+const CheckedList = ({ userInfo, onToggle, isMulti, classesSelectComponent } : typesPropsList) => {
     return (
-        <div className="test42">
+        <div className={classesSelectComponent.classCheckListWpapper}>
             {userInfo.map((user, index) => {
                 return (
                     user.checked === true && (
-                        <div className="input-wrapper__item" key={index}>
+                        <div className={classesSelectComponent.inputWrapperItem} key={index}>
                             {user.userName}
                             <button
-                                className="input-wrapper__item-close"
+                                className={classesSelectComponent.classDelete}
                                 onClick={onToggle.bind(null, user.userId)}
                             />
                             {isMulti ? "," : ""}

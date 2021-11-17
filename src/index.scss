@@ -63,6 +63,7 @@ $bgColorListChecked: #6ac96eb8;
   position: relative;
   display: flex;
   flex-direction: column;
+  margin: 5px 0;
 
   &__list {
     position: relative;
@@ -95,4 +96,8 @@ $bgColorListChecked: #6ac96eb8;
 
 .checked-user {
   background: $bgColorListChecked !important;
+}
+
+.test123 {
+  background-color: red;
 }

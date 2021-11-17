@@ -5,6 +5,10 @@ type infoAboutUsers = {
 
 const urlGetUsers = "https://jsonplaceholder.typicode.com/users";
 
+/**
+ * @description Получает всех доступных пользователей
+ */
+
 function getUsers() {
     return fetch(urlGetUsers)
         .then((response) => response.json())

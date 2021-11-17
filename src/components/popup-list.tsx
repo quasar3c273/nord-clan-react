@@ -1,5 +1,5 @@
 import React from "react";
-import { infoAboutUsers } from "../types";
+import { infoAboutUsers, allClasses } from "../types";
 
 type popupListTypes = {
     isActive: boolean;
@@ -8,6 +8,7 @@ type popupListTypes = {
     isMulti: boolean;
     onToggle: (id: "closeAll" | number) => void;
     handleClick: (id: number) => void;
+    classesSelectComponent: allClasses;
 }
 
 const PopupList = ({
@@ -16,12 +17,13 @@ const PopupList = ({
     filteredUsers,
     isMulti,
     onToggle,
-    handleClick
+    handleClick,
+    classesSelectComponent
 }: popupListTypes) => {
     return (
         <ul
             key="list-popup"
-            className={`${isActive ? "display-none " : ""}users__list`}
+            className={`${isActive ? classesSelectComponent.popupListAllNonDisplay : ""}${classesSelectComponent.popupListAll}`}
             onClick={setDisplay.bind(null, true)}
         >
             {filteredUsers.length > 0 ? (
@@ -34,16 +36,16 @@ const PopupList = ({
                                 : handleClick.bind(null, user.userId)
                         }
                         className={`${
-                            user.checked ? "checked-user " : ""
-                        }users__list__item`}
+                            user.checked ? classesSelectComponent.checkedInPopupList : ""
+                        }${classesSelectComponent.usersPopupListItems}`}
                     >
-                        <span key={user.userName} className="test123">
+                        <span key={user.userName} className={classesSelectComponent.userClassName}>
                             {user.userName}
                         </span>
                         {isMulti && (
                             <input
                                 key={`${user.userId}qwertyqweq`}
-                                className="qwerty12"
+                                className={classesSelectComponent.checkboxUserClassName}
                                 type="checkbox"
                                 checked={user.checked}
                                 readOnly
@@ -52,7 +54,7 @@ const PopupList = ({
                     </li>
                 ))
             ) : (
-                <span className="test123">Ничего не найдено</span>
+                <span className={classesSelectComponent.notSearchOnList}>Ничего не найдено</span>
             )}
         </ul>
     );

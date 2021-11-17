@@ -1,5 +1,6 @@
 import React from "react";
 import useDebounce from "../hooks/useDebounce";
+import { allClasses } from "../types";
 
 type typesPropsList = {
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -7,11 +8,12 @@ type typesPropsList = {
     onToggle: (id: "closeAll" | number) => void;
     handleToggle: () => void;
     arrowStatus: boolean;
+    classesSelectComponent: allClasses;
 }
 
-const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowStatus }: typesPropsList) => {
+const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowStatus, classesSelectComponent }: typesPropsList) => {
     return (
-        <div className="wrapper">
+        <div className={classesSelectComponent.selectFieldWrapper}>
             <input
                 type="text"
                 id="entry-field"
@@ -19,11 +21,11 @@ const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowSt
                 onFocus={setDisplay.bind(null, false)}
             />
             <button
-                className="input-wrapper__item-close"
+                className={classesSelectComponent.classDelete}
                 onClick={onToggle.bind(null, "closeAll")}
             />
             <button
-                className={`input-wrapper__chevron-${arrowStatus ? "down" : "up"}`}
+                className={arrowStatus ? classesSelectComponent.chevronDown : classesSelectComponent.chevronUp}
                 onClick={handleToggle}
             />
         </div>

@@ -3,3 +3,7 @@ export type infoAboutUsers = {
     userName: string;
     checked: boolean;
 }
+
+export type allClasses = {
+    [key: string]: string;
+};
