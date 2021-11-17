@@ -39,13 +39,12 @@ const PopupList = ({
                             user.checked ? classesSelectComponent.checkedInPopupList : ""
                         }${classesSelectComponent.usersPopupListItems}`}
                     >
-                        <span key={user.userName} className={classesSelectComponent.userClassName}>
+                        <span key={user.userName}>
                             {user.userName}
                         </span>
                         {isMulti && (
                             <input
                                 key={`${user.userId}qwertyqweq`}
-                                className={classesSelectComponent.checkboxUserClassName}
                                 type="checkbox"
                                 checked={user.checked}
                                 readOnly
@@ -54,7 +53,7 @@ const PopupList = ({
                     </li>
                 ))
             ) : (
-                <span className={classesSelectComponent.notSearchOnList}>Ничего не найдено</span>
+                <div className={classesSelectComponent.notSearchOnList}>Ничего не найдено</div>
             )}
         </ul>
     );

@@ -15,9 +15,8 @@ const classesSelectComponent = {
     popupListAllNonDisplay: "display-none ",
     checkedInPopupList: "checked-user ",
     usersPopupListItems: "users__list__item",
-    userClassName: "test123",
     checkboxUserClassName: "qwerty12",
-    notSearchOnList: "test123"
+    notSearchOnList: "not-search"
 };
 
 function App() {
