@@ -2,6 +2,9 @@ import React from "react";
 import "./index.scss";
 import EntryField from "./components/entry-field";
 
+/**
+ * @description - массив для хранения имён классов компонента
+ */
 const classesSelectComponent = {
     classWpapperSelect: "users",
     classInputWrapper: "input-wrapper",
@@ -19,14 +22,28 @@ const classesSelectComponent = {
     notSearchOnList: "not-search"
 };
 
+const urlGetUsers: string = "https://jsonplaceholder.typicode.com/users";
+
+/**
+ * @description - Компонент приложения
+ */
 function App() {
     return (
         <>
-            <h1>Test Task</h1>
+            <h1>Test Task Nord Clan</h1>
+            <span>Инпут с возможностью мультивыбора</span>
             <EntryField
                 isMulti={true}
                 nameOnLocalStorage = "users42"
                 classesSelectComponent={classesSelectComponent}
+                urlData={urlGetUsers}
+            />
+            <span>Инпут без возможности мультивыбора</span>
+            <EntryField
+                isMulti={false}
+                nameOnLocalStorage = "users422"
+                classesSelectComponent={classesSelectComponent}
+                urlData={urlGetUsers}
             />
         </>
     );

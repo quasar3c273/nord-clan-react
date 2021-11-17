@@ -8,6 +8,15 @@ type typesPropsList = {
     classesSelectComponent: allClasses;
 }
 
+/**
+ * Компонент для отображения списка выбранных пользователей
+ * @param userInfo - массив объектов пользователей
+ * @param onToggle - функция для обработки изменения состояния выбора пользователя
+ * @param isMulti - статус множественного выбора списка
+ * @param classesSelectComponent - объект с классами для компонента
+ * @type typesPropsList - тип пропсов компонента
+ */
+
 const CheckedList = ({ userInfo, onToggle, isMulti, classesSelectComponent } : typesPropsList) => {
     return (
         <div className={classesSelectComponent.classCheckListWpapper}>

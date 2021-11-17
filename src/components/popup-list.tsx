@@ -11,6 +11,18 @@ type popupListTypes = {
     classesSelectComponent: allClasses;
 }
 
+/**
+ * Компонент выпадающего списка
+ * @param isActive - отображается ли компонент
+ * @param setDisplay - функция для изменения отображения компонента
+ * @param filteredUsers - отфильтрованные пользователи
+ * @param isMulti - статус множественного выбора списка
+ * @param onToggle - функция для изменения статуса множественного выбора
+ * @param handleClick - функция для изменения статуса "cheked"
+ * @param classesSelectComponent - классы компонента
+ * @type popupListTypes - тип пропсов компонента
+ */
+
 const PopupList = ({
     isActive,
     setDisplay,

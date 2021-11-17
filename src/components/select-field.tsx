@@ -11,6 +11,17 @@ type typesPropsList = {
     classesSelectComponent: allClasses;
 }
 
+/**
+ * Компонент пользовательского ввода
+ * @param handleChange - функция обработки изменения значения поля ввода
+ * @param setDisplay - функция отображения поля ввода
+ * @param onToggle - функция очистки выбранных значений
+ * @param handleToggle - функция открытия/закрытия popup
+ * @param arrowStatus - статус показа кнопки выбора
+ * @param classesSelectComponent - объект с классами компонента
+ * @type typesPropsList - объект с типами пропсов компонента
+ */
+
 const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowStatus, classesSelectComponent }: typesPropsList) => {
     return (
         <div className={classesSelectComponent.selectFieldWrapper}>

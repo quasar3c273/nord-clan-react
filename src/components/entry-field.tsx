@@ -6,18 +6,26 @@ import { infoAboutUsers, allClasses } from "../types";
 import getUsers from "../get-data/getUsers";
 
 type typesPropsList = {
-    // userInfo: infoAboutUsers[];
-    // onToggle: (id: number | "closeAll") => void;
-    // handleClick: (id: number) => void;
     isMulti: boolean;
     nameOnLocalStorage: string;
     classesSelectComponent: allClasses;
+    urlData: string;
 }
 
-const EntryField = ({ isMulti = false, nameOnLocalStorage, classesSelectComponent } : typesPropsList) => {
-    const [isActive, setIsActive] = useState(false);
+/**
+ * Компонент для выбора пользователей из списка
+ * @param urlData - адрес для получения данных
+ * @param isMulti - статус множественного выбора списка
+ * @param nameOnLocalStorage - имя переменной в localStorage
+ * @param classesSelectComponent - классы компонента
+ * @type typesPropsList - тип пропсов компонента
+ */
+
+const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelectComponent } : typesPropsList) => {
+    const [isActive, setIsActive] = useState(true);
     const [filter, setFilter] = React.useState("");
     const [userInfo, setUserInfo] = useState<infoAboutUsers[]>([]);
+    const [loading, setLoading] = useState(false);
 
     const handleClick = (id: number) => {
         const newUserInfo: infoAboutUsers[] = userInfo.map((user: infoAboutUsers) => {
@@ -82,13 +90,14 @@ const EntryField = ({ isMulti = false, nameOnLocalStorage, classesSelectComponen
             const localUserInfo: string = localStorage.getItem(nameOnLocalStorage) || "";
             setUserInfo(JSON.parse(localUserInfo));
         } else {
-            getUsers().then((data: any) => {
-                data.map((user: infoAboutUsers) => {
-                    user.checked = false;
-                    return user;
-                });
-                localStorage.setItem(nameOnLocalStorage, JSON.stringify(data));
-                setUserInfo(data);
+            getUsers(urlData).then((data: any) => {
+                if (typeof data === "undefined") {
+                    setLoading(true);
+                    localStorage.removeItem(nameOnLocalStorage);
+                } else {
+                    localStorage.setItem(nameOnLocalStorage, JSON.stringify(data));
+                    setUserInfo(data);
+                }
             });
         }
     }, []);
@@ -106,34 +115,38 @@ const EntryField = ({ isMulti = false, nameOnLocalStorage, classesSelectComponen
 
     return (
         <>
-            <div
-                className={classesSelectComponent.classWpapperSelect}>
-                <div className={classesSelectComponent.classInputWrapper}>
-                    <CheckedList
-                        onToggle={toggleHandler}
-                        userInfo={userInfo}
-                        isMulti={isMulti}
-                        classesSelectComponent={classesSelectComponent}
-                    />
-                    <SelectField
-                        arrowStatus={isActive}
-                        handleChange={handleChange}
+            {loading ? (
+                <h3>Ошибка на стороне сервера</h3>
+            ) : (
+                <div
+                    className={classesSelectComponent.classWpapperSelect}>
+                    <div className={classesSelectComponent.classInputWrapper}>
+                        <CheckedList
+                            onToggle={toggleHandler}
+                            userInfo={userInfo}
+                            isMulti={isMulti}
+                            classesSelectComponent={classesSelectComponent}
+                        />
+                        <SelectField
+                            arrowStatus={isActive}
+                            handleChange={handleChange}
+                            setDisplay={setDisplay}
+                            onToggle={toggleHandler}
+                            handleToggle={handleToggle}
+                            classesSelectComponent={classesSelectComponent}
+                        />
+                    </div>
+                    <PopupList
+                        isActive={isActive}
                         setDisplay={setDisplay}
+                        filteredUsers={filteredUsers}
+                        isMulti={isMulti}
                         onToggle={toggleHandler}
-                        handleToggle={handleToggle}
+                        handleClick={handleClick}
                         classesSelectComponent={classesSelectComponent}
                     />
                 </div>
-                <PopupList
-                    isActive={isActive}
-                    setDisplay={setDisplay}
-                    filteredUsers={filteredUsers}
-                    isMulti={isMulti}
-                    onToggle={toggleHandler}
-                    handleClick={handleClick}
-                    classesSelectComponent={classesSelectComponent}
-                />
-            </div>
+            )}
         </>
     );
 };
