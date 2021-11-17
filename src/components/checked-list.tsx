@@ -6,7 +6,7 @@ type typesPropsList = {
     onToggle: (id: number) => void;
     isMulti: boolean;
     classesSelectComponent: allClasses;
-}
+};
 
 /**
  * Компонент для отображения списка выбранных пользователей
@@ -17,13 +17,21 @@ type typesPropsList = {
  * @type typesPropsList - тип пропсов компонента
  */
 
-const CheckedList = ({ userInfo, onToggle, isMulti, classesSelectComponent } : typesPropsList) => {
+const CheckedList = ({
+    userInfo,
+    onToggle,
+    isMulti,
+    classesSelectComponent
+}: typesPropsList) => {
     return (
         <div className={classesSelectComponent.classCheckListWpapper}>
             {userInfo.map((user, index) => {
                 return (
                     user.checked === true && (
-                        <div className={classesSelectComponent.inputWrapperItem} key={index}>
+                        <div
+                            className={classesSelectComponent.inputWrapperItem}
+                            key={index}
+                        >
                             {user.userName}
                             <button
                                 className={classesSelectComponent.classDelete}

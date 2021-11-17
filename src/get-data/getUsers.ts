@@ -1,7 +1,7 @@
 type infoAboutUsers = {
     id: number;
     username: string;
-}
+};
 
 /**
  * @type {infoAboutUsers[]} - типы данных массива объектов пользователей
@@ -11,21 +11,20 @@ type infoAboutUsers = {
 
 function getUsers(urlGetUsers: string): Promise<infoAboutUsers[]> {
     return fetch(urlGetUsers)
-        .then(response => {
+        .then((response) => {
             if (response.ok) {
-                return response.json()
-                    .then((users) =>
-                        users.map((user: infoAboutUsers) => ({
-                            userId: user.id,
-                            userName: user.username,
-                            checked: false
-                        }))
-                    );
+                return response.json().then((users) =>
+                    users.map((user: infoAboutUsers) => ({
+                        userId: user.id,
+                        userName: user.username,
+                        checked: false
+                    }))
+                );
             } else {
                 throw new Error("Ошибка при получении данных");
             }
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
         });
 }

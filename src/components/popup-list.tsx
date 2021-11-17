@@ -9,7 +9,7 @@ type popupListTypes = {
     onToggle: (id: "closeAll" | number) => void;
     handleClick: (id: number) => void;
     classesSelectComponent: allClasses;
-}
+};
 
 /**
  * Компонент выпадающего списка
@@ -35,7 +35,9 @@ const PopupList = ({
     return (
         <ul
             key="list-popup"
-            className={`${isActive ? classesSelectComponent.popupListAllNonDisplay : ""}${classesSelectComponent.popupListAll}`}
+            className={`${
+                isActive ? classesSelectComponent.popupListAllNonDisplay : ""
+            }${classesSelectComponent.popupListAll}`}
             onClick={setDisplay.bind(null, true)}
         >
             {filteredUsers.length > 0 ? (
@@ -48,12 +50,12 @@ const PopupList = ({
                                 : handleClick.bind(null, user.userId)
                         }
                         className={`${
-                            user.checked ? classesSelectComponent.checkedInPopupList : ""
+                            user.checked
+                                ? classesSelectComponent.checkedInPopupList
+                                : ""
                         }${classesSelectComponent.usersPopupListItems}`}
                     >
-                        <span key={user.userName}>
-                            {user.userName}
-                        </span>
+                        <span key={user.userName}>{user.userName}</span>
                         {isMulti && (
                             <input
                                 key={`${user.userId}qwertyqweq`}
@@ -65,7 +67,9 @@ const PopupList = ({
                     </li>
                 ))
             ) : (
-                <div className={classesSelectComponent.notSearchOnList}>Ничего не найдено</div>
+                <div className={classesSelectComponent.notSearchOnList}>
+                    Ничего не найдено
+                </div>
             )}
         </ul>
     );

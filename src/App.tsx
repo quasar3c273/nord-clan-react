@@ -34,14 +34,14 @@ function App() {
             <span>Инпут с возможностью мультивыбора</span>
             <EntryField
                 isMulti={true}
-                nameOnLocalStorage = "users42"
+                nameOnLocalStorage="users42"
                 classesSelectComponent={classesSelectComponent}
                 urlData={urlGetUsers}
             />
             <span>Инпут без возможности мультивыбора</span>
             <EntryField
                 isMulti={false}
-                nameOnLocalStorage = "users422"
+                nameOnLocalStorage="users422"
                 classesSelectComponent={classesSelectComponent}
                 urlData={urlGetUsers}
             />

@@ -9,7 +9,7 @@ type typesPropsList = {
     handleToggle: () => void;
     arrowStatus: boolean;
     classesSelectComponent: allClasses;
-}
+};
 
 /**
  * Компонент пользовательского ввода
@@ -22,7 +22,14 @@ type typesPropsList = {
  * @type typesPropsList - объект с типами пропсов компонента
  */
 
-const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowStatus, classesSelectComponent }: typesPropsList) => {
+const SelectField = ({
+    handleChange,
+    setDisplay,
+    onToggle,
+    handleToggle,
+    arrowStatus,
+    classesSelectComponent
+}: typesPropsList) => {
     return (
         <div className={classesSelectComponent.selectFieldWrapper}>
             <input
@@ -36,7 +43,11 @@ const SelectField = ({ handleChange, setDisplay, onToggle, handleToggle, arrowSt
                 onClick={onToggle.bind(null, "closeAll")}
             />
             <button
-                className={arrowStatus ? classesSelectComponent.chevronDown : classesSelectComponent.chevronUp}
+                className={
+                    arrowStatus
+                        ? classesSelectComponent.chevronDown
+                        : classesSelectComponent.chevronUp
+                }
                 onClick={handleToggle}
             />
         </div>

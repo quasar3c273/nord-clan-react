@@ -10,7 +10,7 @@ type typesPropsList = {
     nameOnLocalStorage: string;
     classesSelectComponent: allClasses;
     urlData: string;
-}
+};
 
 /**
  * Компонент для выбора пользователей из списка
@@ -21,31 +21,40 @@ type typesPropsList = {
  * @type typesPropsList - тип пропсов компонента
  */
 
-const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelectComponent } : typesPropsList) => {
+const EntryField = ({
+    urlData,
+    isMulti = false,
+    nameOnLocalStorage,
+    classesSelectComponent
+}: typesPropsList) => {
     const [isActive, setIsActive] = useState(true);
     const [filter, setFilter] = React.useState("");
     const [userInfo, setUserInfo] = useState<infoAboutUsers[]>([]);
     const [loading, setLoading] = useState(false);
 
     const handleClick = (id: number) => {
-        const newUserInfo: infoAboutUsers[] = userInfo.map((user: infoAboutUsers) => {
-            if (user.userId === id) {
-                return {
-                    ...user,
-                    checked: !user.checked
-                };
-            } else {
-                return {
-                    ...user,
-                    checked: false
-                };
+        const newUserInfo: infoAboutUsers[] = userInfo.map(
+            (user: infoAboutUsers) => {
+                if (user.userId === id) {
+                    return {
+                        ...user,
+                        checked: !user.checked
+                    };
+                } else {
+                    return {
+                        ...user,
+                        checked: false
+                    };
+                }
             }
-        });
+        );
         localStorage.setItem(nameOnLocalStorage, JSON.stringify(newUserInfo));
         setUserInfo(newUserInfo);
     };
 
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (
+        event
+    ) => {
         setFilter(event.target.value);
     };
 
@@ -64,7 +73,7 @@ const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelec
         } else if (event.key === "Escape") {
             setIsActive(true);
         }
-    };
+    }
 
     const toggleHandler = (id: number | "closeAll") => {
         const newUserInfo = userInfo.map((user: infoAboutUsers) => {
@@ -87,7 +96,8 @@ const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelec
 
     useEffect(() => {
         if (localStorage.getItem(nameOnLocalStorage) !== null) {
-            const localUserInfo: string = localStorage.getItem(nameOnLocalStorage) || "";
+            const localUserInfo: string =
+                localStorage.getItem(nameOnLocalStorage) || "";
             setUserInfo(JSON.parse(localUserInfo));
         } else {
             getUsers(urlData).then((data: any) => {
@@ -95,7 +105,10 @@ const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelec
                     setLoading(true);
                     localStorage.removeItem(nameOnLocalStorage);
                 } else {
-                    localStorage.setItem(nameOnLocalStorage, JSON.stringify(data));
+                    localStorage.setItem(
+                        nameOnLocalStorage,
+                        JSON.stringify(data)
+                    );
                     setUserInfo(data);
                 }
             });
@@ -118,8 +131,7 @@ const EntryField = ({ urlData, isMulti = false, nameOnLocalStorage, classesSelec
             {loading ? (
                 <h3>Ошибка на стороне сервера</h3>
             ) : (
-                <div
-                    className={classesSelectComponent.classWpapperSelect}>
+                <div className={classesSelectComponent.classWpapperSelect}>
                     <div className={classesSelectComponent.classInputWrapper}>
                         <CheckedList
                             onToggle={toggleHandler}

@@ -2,7 +2,7 @@ import { useRef, SyntheticEvent } from "react";
 
 type useDebounceHookTypes = {
     current: number;
-}
+};
 
 /**
  * @description - hook для задержки выполнения функции
