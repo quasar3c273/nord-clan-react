@@ -8,7 +8,7 @@ import EntryField from "./components/entry-field";
 const classesSelectComponent = {
     classWpapperSelect: "users",
     classInputWrapper: "input-wrapper",
-    classCheckListWpapper: "test42",
+    classCheckListWpapper: "check-list-wrapper",
     inputWrapperItem: "input-wrapper__item",
     classDelete: "input-wrapper__item-close",
     selectFieldWrapper: "wrapper",
@@ -18,7 +18,7 @@ const classesSelectComponent = {
     popupListAllNonDisplay: "display-none ",
     checkedInPopupList: "checked-user ",
     usersPopupListItems: "users__list__item",
-    checkboxUserClassName: "qwerty12",
+    checkboxUserClassName: "",
     notSearchOnList: "not-search"
 };
 
